@@ -1,25 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+const users = [
+  { nombre: 'Peter', age: 10 },
+  { nombre: 'Diana', age: 20 },
+  { nombre: 'Julio', age: 30 },
+  { nombre: 'Maya', age: 40 },
+  { nombre: 'Julia', age: 50 },
+  { nombre: 'Melania', age: 60 },
+  { nombre: 'Johanna', age: 70 },
+];
+
+const App = () => {
+  const Hello = (props) => {
+    return (
+      <div>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Hello {props.nombre}, you are {props.age} years old
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      </div>
+    );
+  };
+
+  const userComponents = users.map((user, index) => (
+    <Hello key={index} nombre={user.nombre} age={user.age} />
+  ));
+
+  return (
+    <div>
+      <h1>Greetings</h1>
+      {userComponents}
     </div>
   );
-}
+};
 
 export default App;
